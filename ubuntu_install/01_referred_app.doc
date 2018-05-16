@@ -1,0 +1,35 @@
+## vim
+copy .vimrc to "Home" folder 
+copy .vim/color/molokai.vim to "Home" folder
+
+## tree
+
+## opencv 3.3.1
+# after installed ros-kinetic-desktop-full, opencv 3.3.1
+# run this command to check version
+sudo find / -iname "opencv*"
+
+# it displays as following
+/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig/opencv-3.3.1-dev.pc
+/opt/ros/kinetic/share/OpenCV-3.3.1-dev
+/opt/ros/kinetic/share/OpenCV-3.3.1-dev/OpenCVConfig-version.cmake
+/opt/ros/kinetic/share/OpenCV-3.3.1-dev/OpenCVConfig.cmake
+/opt/ros/kinetic/share/OpenCV-3.3.1-dev/OpenCVModules-release.cmake
+/opt/ros/kinetic/share/OpenCV-3.3.1-dev/OpenCVModules.cmake
+/opt/ros/kinetic/share/opencv3
+/opt/ros/kinetic/bin/opencv_version
+/opt/ros/kinetic/bin/opencv_annotation
+/opt/ros/kinetic/bin/opencv_waldboost_detector
+/opt/ros/kinetic/bin/opencv_traincascade
+/opt/ros/kinetic/bin/opencv_interactive-calibration
+/opt/ros/kinetic/bin/opencv_visualisation
+/opt/ros/kinetic/bin/opencv_createsamples
+/opt/ros/kinetic/include/opencv-3.3.1-dev
+/opt/ros/kinetic/include/opencv-3.3.1-dev/opencv
+/opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2
+/opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/opencv_modules.hpp
+/opt/ros/kinetic/include/opencv-3.3.1-dev/opencv2/opencv.hpp
+find: ‘/run/user/1000/gvfs’: Permission denied
+
+
+ 
