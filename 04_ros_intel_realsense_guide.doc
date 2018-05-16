@@ -1,0 +1,70 @@
+###INSTALL INTEL REALSENSE SDK 2.0 (tag v2.9.1) 
+
+##Install librealsense
+##[LINK: https://github.com/IntelRealSense/librealsense/blob/v2.9.1/doc/installation.md]
+
+# update ubuntu distribution
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+
+# install packages required for librealsense
+sudo apt-get install git 
+sudo apt-get install cmake
+
+sudo apt-get install libusb-1.0-0-dev
+sudo apt-get install libudev-dev
+sudo apt-get install pkg-config
+sudo apt-get install libgtk-3-dev
+sudo apt-get install libglfw3-dev
+
+# git clone code to workspace
+mkdir ros_ws
+cd ros_ws
+mkdir src
+cd src
+git clone https://github.com/IntelRealSense/librealsense
+
+# git checkout branch v2.9.1
+cd librealsense
+git checkout v2.9.1 
+
+# build 
+cd ~/ros_ws/src/librealsense/
+mkdir build
+cd build
+cmake ..
+
+# install
+cd ~/ros_ws/src/librealsense/build
+sudo make uninstall
+make clean
+make
+sudo make install
+
+# install udev rules located in librealsense source directory
+cd ..
+sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules && udevadm trigger
+
+
+##Install Realsense ROS
+# git clone code to workspace
+cd ~/ros_ws/src/
+git clone https://github.com/intel-ros/realsense.git
+
+# checkout branch 2.0.2
+cd realsense
+git checkout 2.0.2
+
+# build
+cd ~/ros_ws
+catkin_make
+
+
+###TEST
+realsense-viewer
+
+###Debug
+sudo find -librealsense*
+

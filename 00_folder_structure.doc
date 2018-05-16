@@ -1,0 +1,65 @@
+tony_wk
+    -- ros_wk
+    	-- realsense
+ 
+    -- cartographer_wk
+	-- cartographer
+	-- cartographer_ros
+	-- cartographer_turtlebot
+	-- ceres-solver
+
+    -- librealsense
+	-- librealsense
+
+    -- ncs_wk
+	-- ncsdk
+
+    -- ros_wk
+
+    -- ros2_wk
+
+
+/opt/ros/kinetic/share
+/opt/ros/kinetic/libs
+    -- actionlib
+    ** amcl
+    -- astra_camera
+    -- base_local_planner
+    -- camera_calibration
+    -- carrot_planner
+    -- catkin
+    -- costmap_2d
+    -- cv_bridge
+    -- dwa_local_planner
+    -- depthimage_to_laserscan
+    -- dynamic_reconfigure
+    ** gazebo
+    -- geometry
+    -- global_planner
+    ** gmapping
+    -- image_view
+    -- kobuki
+    -- librealsense
+    ** map_server
+    -- message_filter
+    ** move_base
+    ** navigation
+    -- nodelet
+    -- octomap
+    -- opencv3
+    -- openni2_camera
+    ** openslam_gmapping
+    -- pcl_conversions
+    -- perception
+    -- robot_pose_publisher
+    -- rosbag
+    -- rqt
+    -- rqt_moveit
+    -- rviz
+    -- smach
+    -- tf
+    -- tf2
+    ** [new install] turtlebot
+    -- urdf
+    -- [new install] urg_node
+

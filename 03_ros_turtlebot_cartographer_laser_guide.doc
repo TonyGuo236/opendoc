@@ -1,0 +1,44 @@
+### INSTALL CARTOGRAPHER ROS
+## [LINK for Cartographer ROS: https://google-cartographer-ros.readthedocs.io/en/latest/]
+## [LINK for Cartographer Turtlebot: https://google-cartographer-ros-for-turtlebots.readthedocs.io/en/latest/]
+
+## Install Cartographer ROS 
+# install wstool and rosdep
+sudo apt-get update
+sudo apt-get install -y python-wstool python-rosdep ninja-build
+
+# create a new workspace
+mkdir cartographer_ws
+cd cartographer_ws
+wstool init src
+
+# merge the cartographer_ros.rosinstall file and fetch code for dependencies
+wstool merge -t src https://raw.githubusercontent.com/googlecartographer/cartographer_ros/master/cartographer_ros.rosinstall
+wstool update -t src
+
+# merge the cartographer_turtlebot.rosinstall file and fetch code for dependencies
+wstool merge -t src https://raw.githubusercontent.com/googlecartographer/cartographer_turtlebot/master/cartographer_turtlebot.rosinstall
+wstool update -t src
+
+# install proto3
+src/cartographer/scripts/install_proto3.sh
+
+# install deb dependencies
+# the command 'sudo rosdep init' will print an error if you have already executed it since installing ROS. This error can be ignored.
+sudo rosdep init
+rosdep update
+rosdep install --from-path src --ignore-src --rosdistro=${ROS_DISTRO} -y
+
+# build and install
+catkin_make_isolated --install --use-ninja
+source install_isolated/setup.bash
+
+# launch cartographer slam on turtlebot with hokuyo laser
+#[terminal 1] 
+roslaunch cartographer_turtlebot turtlebot_urg_lidar_2d.launch
+#[terminal 2]
+roslaunch turtlebot_rviz_launch view_navigation.launch
+
+
+
+

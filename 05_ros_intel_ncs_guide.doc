@@ -1,0 +1,65 @@
+###INSTALL NCS
+
+## Install NCS SDK
+
+# git clone code
+mkdir ncs_wk
+mkdir src
+cd src
+git clone https://github.com/movidius/ncsdk.git
+
+# install
+cd ncsdk
+make install
+
+# make exmaples
+[open a new terminal]
+make examples
+
+## Install NC APP Zoo
+
+# git clone code
+cd ~/ncs_wk/
+cd src
+git clone https://github.com/movidius/ncappzoo.git
+
+# create a symbol link in /opt/movidius to NC APP Zoo
+sudo ln -s ~/ncs_wk/src/ncappzoo /opt/movidius/ncappzoo
+
+## Install object_msgs and ros_ncs
+
+# git clone code
+cd ~/ros_ws/src
+git clone https://github.com/intel/object_msgs
+git clone https://github.com/intel/ros_intel_movidius_ncs.git
+
+# git checkout master branch
+cd ros_intel_movidius_ncs
+git checkout master
+
+# build and install
+cd ~/ros_ws
+catkin_make
+catkin_make install
+source install/setup.bash
+
+# copy lable files to installation location of ncsdk
+cp ~/catkin_ws/src/ros_intel_movidius_ncs/data/labels/* /opt/movidius/ncappzoo/data/ilsvrc12/
+
+
+###RUN DEMO
+
+# complie ncs graph on mobilessd
+cd /opt/movidius/ncappzoo/caffe/SSD_MobileNet
+make
+
+# launch video streaming nodelet
+[terminal 1]
+roslaunch movidius_ncs_launch ncs_camera.launch cnn_type:=mobilenetssd camera:=realsense
+
+[terminal 2]
+roslaunch movidius_ncs_launch ncs_stream_detection_example.launch camera_topic:="/camera/color/image_raw"
+
+
+
+
